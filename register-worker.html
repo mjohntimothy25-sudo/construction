@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worker Registration - BUILDPRO CONSTRUCTIONS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">🏗️</div>
+        <div>
+          <span>BUILDPRO</span>
+          <span class="brand-tagline">Building Projects. Connecting People.</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">☰</button>
+
+      <ul class="nav-menu" id="primaryNavMenu">
+        <li><a href="index.html" class="nav-link" data-i18n="navHome">Home</a></li>
+        <li><a href="workers.html" class="nav-link" data-i18n="navWorkers">Find Workers</a></li>
+        <li><a href="jobs.html" class="nav-link" data-i18n="navJobs">Available Jobs</a></li>
+        <li><a href="post-job.html" class="nav-link" data-i18n="navPostJob">Post Requirement</a></li>
+        <li><a href="register-worker.html" class="btn btn-primary btn-sm active" data-i18n="navRegister">Register Worker</a></li>
+        <li><a href="admin.html" class="nav-link" data-i18n="navAdmin">Admin Panel</a></li>
+      </ul>
+
+      <div class="header-right-controls">
+        <select id="langSelect" class="lang-select" aria-label="Select Language">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+        </select>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle dark/light mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-4" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Wizard Card Container -->
+    <div class="wizard-card">
+      <div class="text-center mb-3">
+        <h2>Construction Worker Registration</h2>
+        <p class="text-muted text-sm">Register yourself in 7 simple steps to get hired by top construction contractors.</p>
+        <span class="badge badge-warning mt-1" id="stepProgressText">Step 1 of 7</span>
+      </div>
+
+      <!-- Step Indicator Progress Bar -->
+      <div class="step-indicator-wrapper">
+        <div class="step-progress-track">
+          <div class="step-progress-fill" id="stepProgressBarFill" style="width: 14.28%;"></div>
+        </div>
+
+        <div class="step-indicator-bar">
+          <div class="step-indicator-item active" data-step="1">
+            <div class="step-node">1</div>
+            <span class="step-label">Personal</span>
+          </div>
+          <div class="step-indicator-item" data-step="2">
+            <div class="step-node">2</div>
+            <span class="step-label">Trade</span>
+          </div>
+          <div class="step-indicator-item" data-step="3">
+            <div class="step-node">3</div>
+            <span class="step-label">Work Info</span>
+          </div>
+          <div class="step-indicator-item" data-step="4">
+            <div class="step-node">4</div>
+            <span class="step-label">Wage</span>
+          </div>
+          <div class="step-indicator-item" data-step="5">
+            <div class="step-node">5</div>
+            <span class="step-label">Experience</span>
+          </div>
+          <div class="step-indicator-item" data-step="6">
+            <div class="step-node">6</div>
+            <span class="step-label">Docs</span>
+          </div>
+          <div class="step-indicator-item" data-step="7">
+            <div class="step-node">7</div>
+            <span class="step-label">Confirm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Elements -->
+      <form id="workerRegistrationForm" onsubmit="return false;">
+
+        <!-- STEP 1: Personal Information -->
+        <div class="step-container" id="stepContainer1" style="display: block;">
+          <h3 class="mb-3">Step 1 — Personal Information</h3>
+          
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Full Name <span class="required">*</span></label>
+              <input type="text" id="regFullName" class="form-control" placeholder="e.g. Ramesh Kumar" data-required="true" data-error-msg="Please enter your full name" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Mobile Number <span class="required">*</span></label>
+              <input type="tel" id="regMobile" class="form-control" placeholder="10-digit mobile number" data-required="true" data-error-msg="Valid mobile number is required" />
+            </div>
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">WhatsApp Number</label>
+              <input type="tel" id="regWhatsApp" class="form-control" placeholder="WhatsApp number (optional)" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" id="regEmail" class="form-control" placeholder="email@example.com (optional)" />
+            </div>
+          </div>
+
+          <div class="form-grid-3col">
+            <div class="form-group">
+              <label class="form-label">Age <span class="required">*</span></label>
+              <input type="number" id="regAge" class="form-control" placeholder="Years" min="18" max="65" value="28" data-required="true" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Gender <span class="required">*</span></label>
+              <select id="regGender" class="form-select" data-required="true">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Profile Photo</label>
+              <input type="file" id="regPhotoInput" class="form-control" accept="image/*" />
+            </div>
+          </div>
+
+          <div class="text-center my-2">
+            <img id="regPhotoPreview" src="" alt="Photo Preview" class="summary-photo" style="display: none; margin: 0 auto;" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Address / Village / House No.</label>
+            <input type="text" id="regAddress" class="form-control" placeholder="Door No, Street Name" />
+          </div>
+
+          <div class="form-grid-3col">
+            <div class="form-group">
+              <label class="form-label">District <span class="required">*</span></label>
+              <input type="text" id="regDistrict" class="form-control" placeholder="e.g. Vizianagaram" data-required="true" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">State <span class="required">*</span></label>
+              <input type="text" id="regState" class="form-control" placeholder="e.g. Andhra Pradesh" data-required="true" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">PIN Code</label>
+              <input type="text" id="regPinCode" class="form-control" placeholder="6-digit PIN" />
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Professional Information -->
+        <div class="step-container" id="stepContainer2" style="display: none;">
+          <h3 class="mb-3">Step 2 — Professional Information & Trade</h3>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Main Category <span class="required">*</span></label>
+              <select id="regCategory" class="form-select" data-required="true" data-error-msg="Please select a main category"></select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Subcategory / Specific Trade <span class="required">*</span></label>
+              <select id="regSubcategory" class="form-select" data-required="true" data-error-msg="Please select your trade">
+                <option value="">Select Category First</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Years of Experience <span class="required">*</span></label>
+              <input type="number" id="regExperience" class="form-control" min="0" max="40" value="5" data-required="true" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Skill Level <span class="required">*</span></label>
+              <select id="regSkillLevel" class="form-select" data-required="true">
+                <option value="Beginner">Beginner (0-1 Yrs)</option>
+                <option value="Semi-Skilled">Semi-Skilled (1-3 Yrs)</option>
+                <option value="Skilled" selected>Skilled (3-8 Yrs)</option>
+                <option value="Highly Skilled">Highly Skilled (8+ Yrs)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Additional Skills (Select all that apply)</label>
+            <div class="form-grid-3col mt-2">
+              <label class="checkbox-label"><input type="checkbox" name="regSkills" value="Brick Masonry" /> Brick Masonry</label>
+              <label class="checkbox-label"><input type="checkbox" name="regSkills" value="Plastering" /> Plastering</label>
+              <label class="checkbox-label"><input type="checkbox" name="regSkills" value="RCC Work" /> RCC Work</label>
+              <label class="checkbox-label"><input type="checkbox" name="regSkills" value="Tile Work" /> Tile Work</label>
+              <label class="checkbox-label"><input type="checkbox" name="regSkills" value="Shuttering" /> Formwork / Shuttering</label>
+              <label class="checkbox-label"><input type="checkbox" name="regSkills" value="Rebar Binding" /> Bar Bending / Rebar</label>
+              <label class="checkbox-label"><input type="checkbox" name="regSkills" value="Building Wiring" /> House Wiring</label>
+              <label class="checkbox-label"><input type="checkbox" name="regSkills" value="Pipe Fitting" /> Pipe Fitting & Plumbing</label>
+              <label class="checkbox-label"><input type="checkbox" name="regSkills" value="Welding" /> Welding & Cutting</label>
+              <label class="checkbox-label"><input type="checkbox" name="regSkills" value="Painting" /> Wall Putty & Painting</label>
+              <label class="checkbox-label"><input type="checkbox" name="regSkills" value="Machinery Operation" /> Machine Operation</label>
+              <label class="checkbox-label"><input type="checkbox" name="regSkills" value="Site Safety" /> Safety Compliance</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Work Information -->
+        <div class="step-container" id="stepContainer3" style="display: none;">
+          <h3 class="mb-3">Step 3 — Work Information & Availability</h3>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Current Location / City <span class="required">*</span></label>
+              <input type="text" id="regCurrentLocation" class="form-control" placeholder="e.g. Vizianagaram" data-required="true" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Preferred Work Locations</label>
+              <input type="text" id="regPreferredLocation" class="form-control" placeholder="e.g. Visakhapatnam, Hyderabad, Vijayawada" />
+            </div>
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Willing to Relocate?</label>
+              <div class="mt-1" style="display: flex; gap: 1.5rem;">
+                <label class="radio-label"><input type="radio" id="regRelocateYes" name="regRelocate" value="Yes" checked /> Yes, Willing to Relocate</label>
+                <label class="radio-label"><input type="radio" id="regRelocateNo" name="regRelocate" value="No" /> No, Local Only</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Current Availability <span class="required">*</span></label>
+              <select id="regAvailability" class="form-select" data-required="true">
+                <option value="Immediately Available" selected>Immediately Available</option>
+                <option value="Available Within 7 Days">Available Within 7 Days</option>
+                <option value="Available Within 15 Days">Available Within 15 Days</option>
+                <option value="Currently Working">Currently Working</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Employment Preference <span class="required">*</span></label>
+            <select id="regEmploymentPref" class="form-select" data-required="true">
+              <option value="Daily Wage" selected>Daily Wage</option>
+              <option value="Monthly Salary">Monthly Salary</option>
+              <option value="Contract">Contract Basis</option>
+              <option value="Full Time">Full Time</option>
+              <option value="Part Time">Part Time</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- STEP 4: Wage Expectations -->
+        <div class="step-container" id="stepContainer4" style="display: none;">
+          <h3 class="mb-3">Step 4 — Wage Expectations</h3>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Expected Daily Wage (₹) <span class="required">*</span></label>
+              <input type="number" id="regExpectedWage" class="form-control" placeholder="e.g. 900" min="300" max="5000" value="900" data-required="true" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Expected Monthly Salary (₹)</label>
+              <input type="number" id="regExpectedMonthly" class="form-control" placeholder="e.g. 25000" min="5000" max="100000" value="25000" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="regNegotiable" checked />
+              Wage / Salary is negotiable based on project facilities (Food, Accommodation)
+            </label>
+          </div>
+        </div>
+
+        <!-- STEP 5: Experience Details -->
+        <div class="step-container" id="stepContainer5" style="display: none;">
+          <h3 class="mb-3">Step 5 — Previous Experience & Projects</h3>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Previous Company / Contractor Name</label>
+              <input type="text" id="regPrevCompany" class="form-control" placeholder="e.g. Srinivasa Constructions" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Previous Project / Site Type</label>
+              <input type="text" id="regPrevProject" class="form-control" placeholder="e.g. 5-Storey Residential Towers" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Description of Experience & Responsibilities</label>
+            <textarea id="regWorkDescription" class="form-control" rows="4" placeholder="Briefly describe the work you have done, tools you can operate, and projects completed..."></textarea>
+          </div>
+        </div>
+
+        <!-- STEP 6: Documents Upload -->
+        <div class="step-container" id="stepContainer6" style="display: none;">
+          <h3 class="mb-3">Step 6 — Verification Documents</h3>
+          <p class="text-sm text-muted mb-3">Attach metadata/files for identity proof (Aadhaar/ID card) or skill/experience certificates.</p>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Select Document Type</label>
+              <select id="docTypeSelect" class="form-select">
+                <option value="Aadhaar Card / ID">Aadhaar Card / Government ID</option>
+                <option value="Experience Certificate">Experience Certificate</option>
+                <option value="Skill Certificate">Skill / Trade Certificate</option>
+                <option value="Heavy Driving License">Heavy Driving License</option>
+                <option value="Other Document">Other Document</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Upload File</label>
+              <input type="file" id="regDocumentInput" class="form-control" multiple />
+            </div>
+          </div>
+
+          <div class="mt-2">
+            <strong>Attached Documents:</strong>
+            <div id="uploadedDocsList" class="mt-1">
+              <p class="text-muted text-sm">No documents attached yet.</p>
+            </div>
+          </div>
+
+          <p class="privacy-note-sm mt-4">🔒 Document metadata preview mode. Secure backend cloud storage is used in production.</p>
+        </div>
+
+        <!-- STEP 7: Confirmation & Summary -->
+        <div class="step-container" id="stepContainer7" style="display: none;">
+          <h3 class="mb-3">Step 7 — Profile Summary & Registration Confirmation</h3>
+          
+          <div id="confirmationSummaryContainer">
+            <!-- Rendered dynamically by workers.js -->
+          </div>
+
+          <div class="form-group mt-3">
+            <label class="checkbox-label">
+              <input type="checkbox" id="regConsentCheck" checked />
+              I agree to allow BUILDPRO CONSTRUCTIONS to use my profile details for recruitment purposes.
+            </label>
+          </div>
+        </div>
+
+        <!-- Action Controls -->
+        <div class="modal-action-btns mt-4" style="border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+          <button type="button" class="btn btn-outline" id="prevStepBtn" style="display: none;">← Previous</button>
+          <button type="button" class="btn btn-primary" id="nextStepBtn">Next Step →</button>
+          <button type="button" class="btn btn-primary" id="submitWorkerBtn" style="display: none; background-color: var(--success);">Register as Construction Worker ✓</button>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <!-- Registration Success Modal -->
+  <div class="modal-container" id="regSuccessModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-box" id="regSuccessModalContent"></div>
+  </div>
+
+  <!-- Sticky Mobile Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <a href="index.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="jobs.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">🔎</span>
+      <span>Jobs</span>
+    </a>
+    <a href="workers.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">👷</span>
+      <span>Workers</span>
+    </a>
+    <a href="register-worker.html" class="mobile-bottom-link active">
+      <span class="mobile-bottom-icon">➕</span>
+      <span>Register</span>
+    </a>
+    <a href="admin.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">👤</span>
+      <span>Admin</span>
+    </a>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 BUILDPRO CONSTRUCTIONS. All rights reserved.</span>
+        <span>"Building Projects. Connecting People."</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/workers.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      WorkerModule.initRegistration();
+    });
+  </script>
+</body>
+</html>

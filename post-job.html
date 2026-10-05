@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Labour Requirement - BUILDPRO CONSTRUCTIONS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">🏗️</div>
+        <div>
+          <span>BUILDPRO</span>
+          <span class="brand-tagline">Building Projects. Connecting People.</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">☰</button>
+
+      <ul class="nav-menu" id="primaryNavMenu">
+        <li><a href="index.html" class="nav-link" data-i18n="navHome">Home</a></li>
+        <li><a href="workers.html" class="nav-link" data-i18n="navWorkers">Find Workers</a></li>
+        <li><a href="jobs.html" class="nav-link" data-i18n="navJobs">Available Jobs</a></li>
+        <li><a href="post-job.html" class="nav-link active" data-i18n="navPostJob">Post Requirement</a></li>
+        <li><a href="register-worker.html" class="btn btn-primary btn-sm" data-i18n="navRegister">Register Worker</a></li>
+        <li><a href="admin.html" class="nav-link" data-i18n="navAdmin">Admin Panel</a></li>
+      </ul>
+
+      <div class="header-right-controls">
+        <select id="langSelect" class="lang-select" aria-label="Select Language">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+        </select>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle dark/light mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-4" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <div class="wizard-card" style="max-width: 850px;">
+      <div class="text-center mb-4">
+        <h2>Post Construction Labour Requirement</h2>
+        <p class="text-muted text-sm">Post your worker requirement to instantly connect with registered construction labourers and trade specialists.</p>
+      </div>
+
+      <form id="postJobForm" onsubmit="return false;">
+        <div class="form-group">
+          <label class="form-label">Job Title <span class="required">*</span></label>
+          <input type="text" id="postJobTitle" class="form-control" placeholder="e.g. Mason Required for High-Rise Project" data-required="true" data-error-msg="Please enter a job title" />
+        </div>
+
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label class="form-label">Main Category <span class="required">*</span></label>
+            <select id="postJobCategory" class="form-select" data-required="true" data-error-msg="Please select a category"></select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Subcategory / Trade <span class="required">*</span></label>
+            <select id="postJobSubcategory" class="form-select" data-required="true" data-error-msg="Please select a trade">
+              <option value="">Select Category First</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-3col">
+          <div class="form-group">
+            <label class="form-label">Number of Workers Needed <span class="required">*</span></label>
+            <input type="number" id="postJobWorkersNeeded" class="form-control" min="1" max="500" value="10" data-required="true" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Project Location <span class="required">*</span></label>
+            <input type="text" id="postJobLocation" class="form-control" placeholder="City, State" data-required="true" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Project Type</label>
+            <input type="text" id="postJobProjectType" class="form-control" placeholder="e.g. Residential Tower / Commercial" />
+          </div>
+        </div>
+
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label class="form-label">Required Experience</label>
+            <select id="postJobExperience" class="form-select">
+              <option value="1+ Years">1+ Years</option>
+              <option value="3+ Years" selected>3+ Years</option>
+              <option value="5+ Years">5+ Years</option>
+              <option value="10+ Years">10+ Years</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Required Skill Level</label>
+            <select id="postJobSkillLevel" class="form-select">
+              <option value="Beginner">Beginner</option>
+              <option value="Semi-Skilled">Semi-Skilled</option>
+              <option value="Skilled" selected>Skilled</option>
+              <option value="Highly Skilled">Highly Skilled</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-3col">
+          <div class="form-group">
+            <label class="form-label">Offered Wage Amount (₹) <span class="required">*</span></label>
+            <input type="number" id="postJobWageOffer" class="form-control" placeholder="e.g. 950" min="100" value="950" data-required="true" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Wage Type <span class="required">*</span></label>
+            <select id="postJobWageType" class="form-select">
+              <option value="Per Day" selected>Per Day</option>
+              <option value="Per Month">Per Month</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Employment Type <span class="required">*</span></label>
+            <select id="postJobEmploymentType" class="form-select">
+              <option value="Daily Wage" selected>Daily Wage</option>
+              <option value="Monthly Salary">Monthly Salary</option>
+              <option value="Contract">Contract</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label class="form-label">Joining Date / Timeline</label>
+            <input type="text" id="postJobJoiningDate" class="form-control" placeholder="e.g. Immediate / Within 5 Days" value="Immediate" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Working Hours</label>
+            <input type="text" id="postJobWorkingHours" class="form-control" placeholder="e.g. 8 Hours/Day" value="8 Hours/Day" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Contractor Facilities & Perks Provided</label>
+          <div class="form-grid-3col mt-1">
+            <label class="checkbox-label"><input type="checkbox" id="postJobAccomodation" checked /> 🏠 Free Accommodation</label>
+            <label class="checkbox-label"><input type="checkbox" id="postJobFood" checked /> 🍲 Free Food / Mess</label>
+            <label class="checkbox-label"><input type="checkbox" id="postJobTransport" checked /> 🚌 Site Transport</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Job Description & Site Requirements</label>
+          <textarea id="postJobDescription" class="form-control" rows="4" placeholder="Provide details about work scope, site location, safety gear policy, food/accommodation arrangements..."></textarea>
+        </div>
+
+        <hr class="divider my-4" />
+
+        <h3 class="mb-3">Employer & Site Contact Details</h3>
+
+        <div class="form-grid-3col">
+          <div class="form-group">
+            <label class="form-label">Company / Contractor Name <span class="required">*</span></label>
+            <input type="text" id="postJobCompanyName" class="form-control" placeholder="e.g. BuildPro Contracting Ltd" data-required="true" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Contact Person <span class="required">*</span></label>
+            <input type="text" id="postJobContactPerson" class="form-control" placeholder="e.g. K. Satyanarayana (Site Engineer)" data-required="true" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Contact Phone Number <span class="required">*</span></label>
+            <input type="tel" id="postJobContactNumber" class="form-control" placeholder="10-digit mobile number" data-required="true" />
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Post Labour Requirement ✓</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Sticky Mobile Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <a href="index.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="jobs.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">🔎</span>
+      <span>Jobs</span>
+    </a>
+    <a href="workers.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">👷</span>
+      <span>Workers</span>
+    </a>
+    <a href="register-worker.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">➕</span>
+      <span>Register</span>
+    </a>
+    <a href="admin.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">👤</span>
+      <span>Admin</span>
+    </a>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 BUILDPRO CONSTRUCTIONS. All rights reserved.</span>
+        <span>"Building Projects. Connecting People."</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/workers.js"></script>
+  <script src="js/jobs.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      JobModule.initJobPosting();
+    });
+  </script>
+</body>
+</html>

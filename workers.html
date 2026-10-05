@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Construction Workers - BUILDPRO CONSTRUCTIONS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">🏗️</div>
+        <div>
+          <span>BUILDPRO</span>
+          <span class="brand-tagline">Building Projects. Connecting People.</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">☰</button>
+
+      <ul class="nav-menu" id="primaryNavMenu">
+        <li><a href="index.html" class="nav-link" data-i18n="navHome">Home</a></li>
+        <li><a href="workers.html" class="nav-link active" data-i18n="navWorkers">Find Workers</a></li>
+        <li><a href="jobs.html" class="nav-link" data-i18n="navJobs">Available Jobs</a></li>
+        <li><a href="post-job.html" class="nav-link" data-i18n="navPostJob">Post Requirement</a></li>
+        <li><a href="register-worker.html" class="btn btn-primary btn-sm" data-i18n="navRegister">Register Worker</a></li>
+        <li><a href="admin.html" class="nav-link" data-i18n="navAdmin">Admin Panel</a></li>
+      </ul>
+
+      <div class="header-right-controls">
+        <select id="langSelect" class="lang-select" aria-label="Select Language">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+        </select>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle dark/light mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-4" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Page Header Title -->
+    <div class="section-header-box">
+      <div>
+        <h1 class="section-title">Find Skilled Construction Workers</h1>
+        <p class="section-subtitle">Filter by trade category, experience, skill level, location, and wage expectations</p>
+      </div>
+      <a href="register-worker.html" class="btn btn-primary">+ Register as Construction Worker</a>
+    </div>
+
+    <!-- Portal Layout Grid -->
+    <div class="portal-layout-grid">
+      <!-- Filters Sidebar -->
+      <aside class="filters-sidebar-card">
+        <div class="filters-title-row">
+          <h3>🔍 Filter Workers</h3>
+          <button id="resetFiltersBtn" class="btn btn-outline btn-xs">Reset All</button>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Search Workers</label>
+          <input type="text" id="workerSearchInput" class="form-control filter-input" placeholder="Search name, skill, trade..." />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Main Category</label>
+          <select id="filterCategory" class="form-select filter-input"></select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Trade / Subcategory</label>
+          <select id="filterSubcategory" class="form-select filter-input">
+            <option value="">Select Trade / Subcategory</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Experience Level</label>
+          <select id="filterExperience" class="form-select filter-input">
+            <option value="">Any Experience</option>
+            <option value="0-1">0–1 Years</option>
+            <option value="2-5">2–5 Years</option>
+            <option value="5-10">5–10 Years</option>
+            <option value="10+">10+ Years</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Skill Level</label>
+          <select id="filterSkillLevel" class="form-select filter-input">
+            <option value="">Any Skill Level</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Semi-Skilled">Semi-Skilled</option>
+            <option value="Skilled">Skilled</option>
+            <option value="Highly Skilled">Highly Skilled</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Location (District / City)</label>
+          <input type="text" id="filterLocation" class="form-control filter-input" placeholder="e.g. Vizianagaram, Hyderabad" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Availability</label>
+          <select id="filterAvailability" class="form-select filter-input">
+            <option value="">Any Availability</option>
+            <option value="Immediately Available">Immediately Available</option>
+            <option value="Available Within 7 Days">Available Within 7 Days</option>
+            <option value="Available Within 15 Days">Available Within 15 Days</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Max Expected Wage (₹/day)</label>
+          <input type="number" id="filterMaxWage" class="form-control filter-input" placeholder="e.g. 1200" min="0" step="50" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Employment Preference</label>
+          <select id="filterEmpType" class="form-select filter-input">
+            <option value="">Any Employment Type</option>
+            <option value="Daily Wage">Daily Wage</option>
+            <option value="Monthly Salary">Monthly Salary</option>
+            <option value="Contract">Contract</option>
+            <option value="Full Time">Full Time</option>
+          </select>
+        </div>
+
+        <button id="applyFiltersBtn" class="btn btn-primary btn-block mt-2">Apply Filters</button>
+      </aside>
+
+      <!-- Worker Main Content Column -->
+      <section>
+        <div class="filters-title-row" style="background: var(--bg-card); padding: 1rem 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-bottom: 1.5rem;">
+          <h2 id="workersCountDisplay" style="font-size: 1.2rem;">0 Workers Found</h2>
+          
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <label class="text-xs text-muted">Sort By:</label>
+            <select id="workerSortSelect" class="form-select-sm" style="width: auto;">
+              <option value="newest">Newest Registered</option>
+              <option value="exp-desc">Highest Experience</option>
+              <option value="wage-asc">Lowest Wage</option>
+              <option value="wage-desc">Highest Wage</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="workers-grid" id="workersGridContainer">
+          <!-- Rendered dynamically by workers.js -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Sticky Mobile Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <a href="index.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="jobs.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">🔎</span>
+      <span>Jobs</span>
+    </a>
+    <a href="workers.html" class="mobile-bottom-link active">
+      <span class="mobile-bottom-icon">👷</span>
+      <span>Workers</span>
+    </a>
+    <a href="register-worker.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">➕</span>
+      <span>Register</span>
+    </a>
+    <a href="admin.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">👤</span>
+      <span>Admin</span>
+    </a>
+  </nav>
+
+  <!-- Contact Modal -->
+  <div class="modal-container" id="contactWorkerModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-box" id="contactModalContent"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 BUILDPRO CONSTRUCTIONS. All rights reserved.</span>
+        <span>"Building Projects. Connecting People."</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/workers.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      WorkerModule.initFindWorkers();
+    });
+  </script>
+</body>
+</html>

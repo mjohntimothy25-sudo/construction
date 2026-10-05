@@ -1,0 +1,172 @@
+/* ==========================================================================
+   BUILDPRO CONSTRUCTIONS - Responsive Stylesheet
+   ========================================================================== */
+
+/* Tablet & Smaller Desktops */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .stat-card-item:nth-child(3) {
+    border-right: none;
+  }
+
+  .portal-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters-sidebar-card {
+    position: static;
+  }
+
+  .profile-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .job-meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile Devices (Phones) */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 70px; /* Space for mobile sticky bottom nav */
+  }
+
+  .header-inner {
+    height: 64px;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: var(--bg-card);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    display: none;
+    z-index: 99;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
+  }
+
+  .hero-section {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.95rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .stats-banner {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .stat-card-item {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+  }
+
+  .counter-value {
+    font-size: 1.75rem;
+  }
+
+  .wizard-card {
+    padding: 1.25rem;
+  }
+
+  .form-grid-2col, .form-grid-3col {
+    grid-template-columns: 1fr;
+  }
+
+  .step-label {
+    display: none; /* Hide text label on phone screens to fit nodes */
+  }
+
+  .step-node {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .workers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .worker-card-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-grid, .details-2col-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .job-card-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .job-wage-badge {
+    text-align: left;
+    width: 100%;
+  }
+
+  .job-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .modal-content-box {
+    padding: 1.25rem;
+  }
+
+  .toast-container {
+    left: 1rem;
+    right: 1rem;
+    bottom: 4.5rem;
+  }
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employer Registration - BUILDPRO CONSTRUCTIONS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">🏗️</div>
+        <div>
+          <span>BUILDPRO</span>
+          <span class="brand-tagline">Building Projects. Connecting People.</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">☰</button>
+
+      <ul class="nav-menu" id="primaryNavMenu">
+        <li><a href="index.html" class="nav-link" data-i18n="navHome">Home</a></li>
+        <li><a href="workers.html" class="nav-link" data-i18n="navWorkers">Find Workers</a></li>
+        <li><a href="jobs.html" class="nav-link" data-i18n="navJobs">Available Jobs</a></li>
+        <li><a href="post-job.html" class="nav-link" data-i18n="navPostJob">Post Requirement</a></li>
+        <li><a href="register-worker.html" class="btn btn-primary btn-sm" data-i18n="navRegister">Register Worker</a></li>
+        <li><a href="admin.html" class="nav-link" data-i18n="navAdmin">Admin Panel</a></li>
+      </ul>
+
+      <div class="header-right-controls">
+        <select id="langSelect" class="lang-select" aria-label="Select Language">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+        </select>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle dark/light mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-4" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <div class="wizard-card" style="max-width: 800px;">
+      <div class="text-center mb-4">
+        <h2>Employer / Company Registration</h2>
+        <p class="text-muted text-sm">Register your construction company or contracting firm to post jobs and recruit workers easily.</p>
+      </div>
+
+      <form id="employerRegisterForm" onsubmit="return false;">
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label class="form-label">Company / Firm Name <span class="required">*</span></label>
+            <input type="text" id="empCompanyName" class="form-control" placeholder="e.g. BuildPro Contracting Ltd" data-required="true" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Contact Person Name <span class="required">*</span></label>
+            <input type="text" id="empContactPerson" class="form-control" placeholder="e.g. K. Satyanarayana" data-required="true" />
+          </div>
+        </div>
+
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label class="form-label">Mobile Number <span class="required">*</span></label>
+            <input type="tel" id="empMobile" class="form-control" placeholder="10-digit mobile number" data-required="true" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Official Email Address</label>
+            <input type="email" id="empEmail" class="form-control" placeholder="hr@company.com" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Company Registered Address</label>
+          <input type="text" id="empAddress" class="form-control" placeholder="Building, Street, Landmark" />
+        </div>
+
+        <div class="form-grid-3col">
+          <div class="form-group">
+            <label class="form-label">City / Location <span class="required">*</span></label>
+            <input type="text" id="empCity" class="form-control" placeholder="e.g. Hyderabad" data-required="true" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">State <span class="required">*</span></label>
+            <input type="text" id="empState" class="form-control" placeholder="e.g. Telangana" data-required="true" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Construction Type</label>
+            <select id="empConstructionType" class="form-select">
+              <option value="Residential & Commercial">Residential & Commercial</option>
+              <option value="Infrastructure & Highways">Infrastructure & Highways</option>
+              <option value="Industrial & Warehousing">Industrial & Warehousing</option>
+              <option value="Interior & Fitout">Interior & Fitout</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">GST Number (Optional)</label>
+          <input type="text" id="empGstNumber" class="form-control" placeholder="15-digit GSTIN (Optional)" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Company Overview / Description</label>
+          <textarea id="empDescription" class="form-control" rows="3" placeholder="Brief description of projects handled and contractor domain..."></textarea>
+        </div>
+
+        <div class="mt-4">
+          <button type="button" id="submitEmployerBtn" class="btn btn-primary btn-lg btn-block">Register Company Profile ✓</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Sticky Mobile Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <a href="index.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="jobs.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">🔎</span>
+      <span>Jobs</span>
+    </a>
+    <a href="workers.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">👷</span>
+      <span>Workers</span>
+    </a>
+    <a href="register-worker.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">➕</span>
+      <span>Register</span>
+    </a>
+    <a href="admin.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">👤</span>
+      <span>Admin</span>
+    </a>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 BUILDPRO CONSTRUCTIONS. All rights reserved.</span>
+        <span>"Building Projects. Connecting People."</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("submitEmployerBtn");
+      if (btn) {
+        btn.addEventListener("click", () => {
+          const companyName = document.getElementById("empCompanyName")?.value?.trim();
+          const contactPerson = document.getElementById("empContactPerson")?.value?.trim();
+          const mobile = document.getElementById("empMobile")?.value?.trim();
+
+          if (!companyName || !contactPerson || !mobile) {
+            App.showToast("Please fill in company name, contact person, and mobile number.", "warning");
+            return;
+          }
+
+          const empData = {
+            companyName: companyName,
+            contactPerson: contactPerson,
+            mobile: mobile,
+            email: document.getElementById("empEmail")?.value?.trim(),
+            address: document.getElementById("empAddress")?.value?.trim(),
+            city: document.getElementById("empCity")?.value?.trim(),
+            state: document.getElementById("empState")?.value?.trim(),
+            constructionType: document.getElementById("empConstructionType")?.value,
+            gstNumber: document.getElementById("empGstNumber")?.value?.trim(),
+            description: document.getElementById("empDescription")?.value?.trim()
+          };
+
+          const savedEmp = storage.saveEmployer(empData);
+          App.showToast(`Employer registered successfully! Employer ID: ${savedEmp.id}`, "success");
+          setTimeout(() => {
+            window.location.href = "post-job.html";
+          }, 1200);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

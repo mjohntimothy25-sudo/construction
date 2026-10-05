@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - BUILDPRO CONSTRUCTIONS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    /* Admin Specific Styles */
+    .admin-nav-bar {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.5rem;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+    }
+
+    .admin-nav-link {
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .admin-nav-link:hover, .admin-nav-link.active {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .status-select-verified { color: #047857; font-weight: 600; }
+    .status-select-pending { color: #B45309; font-weight: 600; }
+    .status-select-rejected { color: #B91C1C; font-weight: 600; }
+
+    .admin-cat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+    }
+
+    .admin-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .admin-cat-icon { font-size: 1.8rem; }
+    .admin-subcat-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+    .reports-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .funnel-stats-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .funnel-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-sm);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">🏗️</div>
+        <div>
+          <span>BUILDPRO</span>
+          <span class="brand-tagline">Building Projects. Connecting People.</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">☰</button>
+
+      <ul class="nav-menu" id="primaryNavMenu">
+        <li><a href="index.html" class="nav-link" data-i18n="navHome">Home</a></li>
+        <li><a href="workers.html" class="nav-link" data-i18n="navWorkers">Find Workers</a></li>
+        <li><a href="jobs.html" class="nav-link" data-i18n="navJobs">Available Jobs</a></li>
+        <li><a href="post-job.html" class="nav-link" data-i18n="navPostJob">Post Requirement</a></li>
+        <li><a href="register-worker.html" class="btn btn-primary btn-sm" data-i18n="navRegister">Register Worker</a></li>
+        <li><a href="admin.html" class="nav-link active" data-i18n="navAdmin">Admin Panel</a></li>
+      </ul>
+
+      <div class="header-right-controls">
+        <select id="langSelect" class="lang-select" aria-label="Select Language">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+        </select>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle dark/light mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-4" id="adminDashboardMain" style="padding-top: 1.5rem; padding-bottom: 4rem;">
+    <!-- Admin Stat Banner Cards -->
+    <div class="stats-banner mb-4">
+      <div class="stats-grid" style="grid-template-columns: repeat(6, 1fr);">
+        <div class="stat-card-item">
+          <span class="stat-card-icon">👷</span>
+          <div class="counter-value" id="adminTotalWorkersCard">0</div>
+          <div class="stat-label">Total Workers</div>
+        </div>
+        <div class="stat-card-item">
+          <span class="stat-card-icon">🟢</span>
+          <div class="counter-value" id="adminAvailableWorkersCard">0</div>
+          <div class="stat-label">Available Workers</div>
+        </div>
+        <div class="stat-card-item">
+          <span class="stat-card-icon">⭐</span>
+          <div class="counter-value" id="adminSkilledWorkersCard">0</div>
+          <div class="stat-label">Skilled Workers</div>
+        </div>
+        <div class="stat-card-item">
+          <span class="stat-card-icon">💼</span>
+          <div class="counter-value" id="adminTotalJobsCard">0</div>
+          <div class="stat-label">Total Jobs</div>
+        </div>
+        <div class="stat-card-item">
+          <span class="stat-card-icon">📌</span>
+          <div class="counter-value" id="adminActiveReqsCard">0</div>
+          <div class="stat-label">Active Requirements</div>
+        </div>
+        <div class="stat-card-item">
+          <span class="stat-card-icon">🎉</span>
+          <div class="counter-value" id="adminHiredCard">0</div>
+          <div class="stat-label">Workers Hired</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Tab Navigation Bar -->
+    <div class="admin-nav-bar">
+      <a href="#overview" class="admin-nav-link active" data-tab="overview">📊 Overview & Charts</a>
+      <a href="#workers" class="admin-nav-link" data-tab="workers">👷 Worker Management</a>
+      <a href="#jobs" class="admin-nav-link" data-tab="jobs">💼 Jobs Management</a>
+      <a href="#applications" class="admin-nav-link" data-tab="applications">📋 Job Applications</a>
+      <a href="#categories" class="admin-nav-link" data-tab="categories">🧱 Categories Manager</a>
+      <a href="#reports" class="admin-nav-link" data-tab="reports">📈 Analytics & Reports</a>
+      <a href="#settings" class="admin-nav-link" data-tab="settings">⚙️ Settings & Privacy</a>
+    </div>
+
+    <!-- TAB 1: OVERVIEW -->
+    <div class="admin-tab-content" id="tab-overview" style="display: block;">
+      <div class="profile-section-card">
+        <h3 class="section-card-title">👷 Workers Distribution by Main Category</h3>
+        <div id="adminCategoryChartContainer" class="mt-3"></div>
+      </div>
+    </div>
+
+    <!-- TAB 2: WORKERS MANAGEMENT -->
+    <div class="admin-tab-content" id="tab-workers" style="display: none;">
+      <div class="profile-section-card">
+        <div class="filters-title-row mb-3">
+          <h3 class="section-card-title">Worker Verification & Management Table</h3>
+          <a href="register-worker.html" class="btn btn-primary btn-sm">+ Register New Worker</a>
+        </div>
+
+        <!-- Table Filters Row -->
+        <div class="form-grid-3col mb-3" style="background: var(--bg-subtle); padding: 0.75rem; border-radius: var(--radius-md);">
+          <div>
+            <label class="text-xs text-muted">Search Workers:</label>
+            <input type="text" id="adminWorkerSearchInput" class="form-control" placeholder="Search ID, name, city..." />
+          </div>
+          <div>
+            <label class="text-xs text-muted">Category:</label>
+            <select id="adminWorkerCategoryFilter" class="form-select"></select>
+          </div>
+          <div>
+            <label class="text-xs text-muted">Verification Status:</label>
+            <select id="adminWorkerStatusFilter" class="form-select">
+              <option value="">All Statuses</option>
+              <option value="Verified">Verified 🟢</option>
+              <option value="Pending Verification">Pending 🟡</option>
+              <option value="Rejected">Rejected 🔴</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Worker ID</th>
+                <th>Worker Name</th>
+                <th>Category / Trade</th>
+                <th>Skill</th>
+                <th>Exp</th>
+                <th>Location</th>
+                <th>Availability</th>
+                <th>Daily Wage</th>
+                <th>Verification</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminWorkersTableBody">
+              <!-- Rendered dynamically by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: JOBS MANAGEMENT -->
+    <div class="admin-tab-content" id="tab-jobs" style="display: none;">
+      <div class="profile-section-card">
+        <div class="filters-title-row mb-3">
+          <h3 class="section-card-title">Job Requirements Management</h3>
+          <a href="post-job.html" class="btn btn-primary btn-sm">+ Post New Job</a>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Job ID</th>
+                <th>Job Title & Company</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Needed</th>
+                <th>Wage Offer</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminJobsTableBody">
+              <!-- Rendered dynamically by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: APPLICATIONS MANAGEMENT -->
+    <div class="admin-tab-content" id="tab-applications" style="display: none;">
+      <div class="profile-section-card">
+        <h3 class="section-card-title mb-3">Job Applications & Hiring Workflow</h3>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>App ID</th>
+                <th>Applicant Worker</th>
+                <th>Job Title & Employer</th>
+                <th>Applied Date</th>
+                <th>Notes</th>
+                <th>Hiring Status Workflow</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="adminAppsTableBody">
+              <!-- Rendered dynamically by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: CATEGORIES MANAGER -->
+    <div class="admin-tab-content" id="tab-categories" style="display: none;">
+      <div class="profile-section-card">
+        <div class="filters-title-row mb-3">
+          <h3 class="section-card-title">Construction Categories & Trade Manager</h3>
+          <button id="addNewCategoryBtn" class="btn btn-primary btn-sm">+ Add New Category</button>
+        </div>
+
+        <div class="category-cards-grid" id="adminCategoriesGrid">
+          <!-- Rendered dynamically by admin.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: REPORTS -->
+    <div class="admin-tab-content" id="tab-reports" style="display: none;">
+      <div id="adminReportsContainer">
+        <!-- Rendered dynamically by admin.js -->
+      </div>
+    </div>
+
+    <!-- TAB 7: SETTINGS -->
+    <div class="admin-tab-content" id="tab-settings" style="display: none;">
+      <div id="adminSettingsContainer">
+        <!-- Rendered dynamically by admin.js -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Add Category Modal -->
+  <div class="modal-container" id="addCategoryModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-box">
+      <button class="modal-close-btn">&times;</button>
+      <h2>Add New Worker Category</h2>
+      <div class="form-group mt-3">
+        <label class="form-label">Category Name</label>
+        <input type="text" id="newCatName" class="form-control" placeholder="e.g. Scaffolding & Rigger" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Category Emoji Icon</label>
+        <input type="text" id="newCatIcon" class="form-control" placeholder="e.g. 🏗️" value="🔨" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <input type="text" id="newCatDesc" class="form-control" placeholder="Brief description..." />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Initial Subcategories / Trades (Comma Separated)</label>
+        <input type="text" id="newCatSubcats" class="form-control" placeholder="e.g. Rigger, Scaffold Master, Helper" />
+      </div>
+      <div class="modal-action-btns mt-3">
+        <button type="button" id="saveCategoryBtn" class="btn btn-primary btn-block">Save Category</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div class="modal-container" id="contactWorkerModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-box" id="contactModalContent"></div>
+  </div>
+
+  <!-- Sticky Mobile Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <a href="index.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="jobs.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">🔎</span>
+      <span>Jobs</span>
+    </a>
+    <a href="workers.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">👷</span>
+      <span>Workers</span>
+    </a>
+    <a href="register-worker.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">➕</span>
+      <span>Register</span>
+    </a>
+    <a href="admin.html" class="mobile-bottom-link active">
+      <span class="mobile-bottom-icon">👤</span>
+      <span>Admin</span>
+    </a>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 BUILDPRO CONSTRUCTIONS. All rights reserved.</span>
+        <span>"Building Projects. Connecting People."</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/workers.js"></script>
+  <script src="js/jobs.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      AdminModule.initAdminDashboard();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUILDPRO CONSTRUCTIONS - Construction Labour Recruitment Portal</title>
+  <meta name="description" content="Connect with skilled construction workers based on trade, experience, location and availability. Register as worker or post labour requirements.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">🏗️</div>
+        <div>
+          <span>BUILDPRO</span>
+          <span class="brand-tagline">Building Projects. Connecting People.</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">☰</button>
+
+      <ul class="nav-menu" id="primaryNavMenu">
+        <li><a href="index.html" class="nav-link active" data-i18n="navHome">Home</a></li>
+        <li><a href="workers.html" class="nav-link" data-i18n="navWorkers">Find Workers</a></li>
+        <li><a href="jobs.html" class="nav-link" data-i18n="navJobs">Available Jobs</a></li>
+        <li><a href="post-job.html" class="nav-link" data-i18n="navPostJob">Post Requirement</a></li>
+        <li><a href="register-worker.html" class="btn btn-primary btn-sm" data-i18n="navRegister">Register Worker</a></li>
+        <li><a href="admin.html" class="nav-link" data-i18n="navAdmin">Admin Panel</a></li>
+      </ul>
+
+      <div class="header-right-controls">
+        <select id="langSelect" class="lang-select" aria-label="Select Language">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+        </select>
+        <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle dark/light mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <h1 class="hero-title" data-i18n="heroTitle">Find Skilled Construction Workers Faster</h1>
+        <p class="hero-subtitle" data-i18n="heroSub">Connect with skilled and experienced construction workers based on trade, experience, location and availability.</p>
+        
+        <div class="hero-action-btns">
+          <a href="register-worker.html" class="btn btn-primary btn-lg" data-i18n="btnRegisterWorker">👷 Register as Worker</a>
+          <a href="workers.html" class="btn btn-secondary btn-lg" data-i18n="btnFindWorkers">🔎 Find Workers</a>
+          <a href="jobs.html" class="btn btn-outline btn-lg" style="color: #FFF; border-color: rgba(255,255,255,0.4);" data-i18n="btnViewJobs">💼 View Jobs</a>
+          <a href="post-job.html" class="btn btn-primary btn-lg" style="background-color: var(--accent);" data-i18n="btnPostRequirement">➕ Post Labour Requirement</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Counter Grid -->
+    <div class="container">
+      <div class="stats-banner">
+        <div class="stats-grid">
+          <div class="stat-card-item">
+            <span class="stat-card-icon">👷</span>
+            <div class="counter-value" data-count-key="totalWorkers" data-target="0">0</div>
+            <div class="stat-label" data-i18n="statWorkers">Registered Workers</div>
+          </div>
+          <div class="stat-card-item">
+            <span class="stat-card-icon">⭐</span>
+            <div class="counter-value" data-count-key="skilledWorkers" data-target="0">0</div>
+            <div class="stat-label" data-i18n="statSkilled">Skilled Workers</div>
+          </div>
+          <div class="stat-card-item">
+            <span class="stat-card-icon">🟢</span>
+            <div class="counter-value" data-count-key="availableWorkers" data-target="0">0</div>
+            <div class="stat-label" data-i18n="statAvailable">Available Workers</div>
+          </div>
+          <div class="stat-card-item">
+            <span class="stat-card-icon">💼</span>
+            <div class="counter-value" data-count-key="totalJobs" data-target="0">0</div>
+            <div class="stat-label" data-i18n="statJobs">Construction Jobs</div>
+          </div>
+          <div class="stat-card-item">
+            <span class="stat-card-icon">🧱</span>
+            <div class="counter-value" data-count-key="totalCategories" data-target="0">0</div>
+            <div class="stat-label" data-i18n="statCategories">Categories</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Dashboard Section -->
+    <section class="container my-4" style="padding-top: 4rem;">
+      <div class="section-header-box">
+        <div>
+          <h2 class="section-title">Explore Worker Categories</h2>
+          <p class="section-subtitle">Find verified workers by specific construction trades and skills</p>
+        </div>
+        <a href="workers.html" class="btn btn-outline">View All Workers →</a>
+      </div>
+
+      <div class="category-cards-grid" id="homeCategoryGrid">
+        <a href="workers.html?category=Masonry" class="category-card">
+          <div class="category-icon-bg">🧱</div>
+          <div>
+            <h3 class="category-title">Masonry</h3>
+            <span class="category-worker-count">Mason, Brick, Tile, Plaster</span>
+          </div>
+        </a>
+        <a href="workers.html?category=Civil Construction" class="category-card">
+          <div class="category-icon-bg">🏗️</div>
+          <div>
+            <h3 class="category-title">Civil Construction</h3>
+            <span class="category-worker-count">Shuttering, Bar Bender, Concrete</span>
+          </div>
+        </a>
+        <a href="workers.html?category=Electrical" class="category-card">
+          <div class="category-icon-bg">⚡</div>
+          <div>
+            <h3 class="category-title">Electrical</h3>
+            <span class="category-worker-count">Electrician, Wiring, Industrial</span>
+          </div>
+        </a>
+        <a href="workers.html?category=Plumbing" class="category-card">
+          <div class="category-icon-bg">🚰</div>
+          <div>
+            <h3 class="category-title">Plumbing</h3>
+            <span class="category-worker-count">Plumber, Pipe Fitter, Sanitary</span>
+          </div>
+        </a>
+        <a href="workers.html?category=Carpentry" class="category-card">
+          <div class="category-icon-bg">🪚</div>
+          <div>
+            <h3 class="category-title">Carpentry</h3>
+            <span class="category-worker-count">Carpenter, Furniture, Formwork</span>
+          </div>
+        </a>
+        <a href="workers.html?category=Painting" class="category-card">
+          <div class="category-icon-bg">🎨</div>
+          <div>
+            <h3 class="category-title">Painting</h3>
+            <span class="category-worker-count">Wall Painter, Spray, Putty</span>
+          </div>
+        </a>
+        <a href="workers.html?category=Welding %26 Fabrication" class="category-card">
+          <div class="category-icon-bg">🔥</div>
+          <div>
+            <h3 class="category-title">Welding & Fabrication</h3>
+            <span class="category-worker-count">TIG, Arc, MIG, Structural</span>
+          </div>
+        </a>
+        <a href="workers.html?category=Equipment Operators" class="category-card">
+          <div class="category-icon-bg">🚜</div>
+          <div>
+            <h3 class="category-title">Equipment Operators</h3>
+            <span class="category-worker-count">JCB, Excavator, Crane</span>
+          </div>
+        </a>
+        <a href="workers.html?category=General Labour" class="category-card">
+          <div class="category-icon-bg">👷</div>
+          <div>
+            <h3 class="category-title">General Labour</h3>
+            <span class="category-worker-count">Helper, Material Handler</span>
+          </div>
+        </a>
+        <a href="workers.html?category=Specialized Workers" class="category-card">
+          <div class="category-icon-bg">🛠️</div>
+          <div>
+            <h3 class="category-title">Specialized Workers</h3>
+            <span class="category-worker-count">HVAC, Waterproofing, Solar</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Featured Workers Section -->
+    <section class="container my-4" style="padding-top: 2rem;">
+      <div class="section-header-box">
+        <div>
+          <h2 class="section-title">Featured Skilled Workers</h2>
+          <p class="section-subtitle">Verified construction workers available for immediate hiring</p>
+        </div>
+        <a href="workers.html" class="btn btn-outline">Browse All 30+ Workers →</a>
+      </div>
+
+      <div class="workers-grid" id="homeFeaturedWorkersGrid">
+        <!-- Rendered dynamically by script -->
+      </div>
+    </section>
+
+    <!-- Featured Jobs Section -->
+    <section class="container my-4" style="padding-top: 2rem; padding-bottom: 4rem;">
+      <div class="section-header-box">
+        <div>
+          <h2 class="section-title">Latest Construction Jobs</h2>
+          <p class="section-subtitle">Active contractor requirements for daily wage and monthly salary jobs</p>
+        </div>
+        <a href="jobs.html" class="btn btn-outline">Browse All Jobs →</a>
+      </div>
+
+      <div class="jobs-grid" id="homeFeaturedJobsGrid">
+        <!-- Rendered dynamically by script -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky Mobile Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <a href="index.html" class="mobile-bottom-link active">
+      <span class="mobile-bottom-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="jobs.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">🔎</span>
+      <span>Jobs</span>
+    </a>
+    <a href="workers.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">👷</span>
+      <span>Workers</span>
+    </a>
+    <a href="register-worker.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">➕</span>
+      <span>Register</span>
+    </a>
+    <a href="admin.html" class="mobile-bottom-link">
+      <span class="mobile-bottom-icon">👤</span>
+      <span>Admin</span>
+    </a>
+  </nav>
+
+  <!-- Contact Modal -->
+  <div class="modal-container" id="contactWorkerModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-box" id="contactModalContent"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-brand-title">BUILDPRO CONSTRUCTIONS</h3>
+          <p class="text-sm">Connecting construction companies with skilled, verified labour category-wise. Simple, transparent, and mobile-friendly recruitment portal.</p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">For Workers</h4>
+          <ul class="footer-links">
+            <li><a href="register-worker.html">Worker Registration</a></li>
+            <li><a href="jobs.html">Browse Construction Jobs</a></li>
+            <li><a href="workers.html">Categories & Trades</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">For Employers</h4>
+          <ul class="footer-links">
+            <li><a href="post-job.html">Post Labour Requirement</a></li>
+            <li><a href="workers.html">Search Skilled Labour</a></li>
+            <li><a href="employer-register.html">Employer Registration</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Portal Admin</h4>
+          <ul class="footer-links">
+            <li><a href="admin.html">Admin Dashboard</a></li>
+            <li><a href="admin.html">Worker Verification</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 BUILDPRO CONSTRUCTIONS. All rights reserved.</span>
+        <span>"Building Projects. Connecting People."</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/workers.js"></script>
+  <script src="js/jobs.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Render 3 sample workers on home page
+      const workers = storage.getWorkers().slice(0, 3);
+      const workerGrid = document.getElementById("homeFeaturedWorkersGrid");
+      if (workerGrid && workers.length > 0) {
+        workerGrid.innerHTML = workers.map(w => WorkerModule.renderWorkerCardHTML(w)).join("");
+      }
+
+      // Render 3 sample jobs on home page
+      const jobs = storage.getJobs().slice(0, 3);
+      const jobsGrid = document.getElementById("homeFeaturedJobsGrid");
+      if (jobsGrid && jobs.length > 0) {
+        jobsGrid.innerHTML = jobs.map(j => JobModule.renderJobCardHTML(j)).join("");
+      }
+    });
+  </script>
+</body>
+</html>
